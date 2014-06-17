@@ -1,0 +1,33 @@
+<RCC>
+    <qresource prefix="/">
+        <file>glyphs/disk.png</file>
+        <file>glyphs/folder.png</file>
+        <file>glyphs/information.png</file>
+        <file>glyphs/page_white.png</file>
+        <file>glyphs/wrench.png</file>
+        <file>glyphs/zoom_in.png</file>
+        <file>glyphs/zoom_out.png</file>
+        <file>glyphs/cross.png</file>
+        <file>glyphs/door.png</file>
+        <file>glyphs/copy.png</file>
+        <file>glyphs/cut.png</file>
+        <file>glyphs/paste_plain.png</file>
+        <file>glyphs/arrow_redo.png</file>
+        <file>glyphs/arrow_undo.png</file>
+        <file>glyphs/shape_align_bottom.png</file>
+        <file>glyphs/shape_align_center.png</file>
+        <file>glyphs/shape_align_left.png</file>
+        <file>glyphs/shape_align_middle.png</file>
+        <file>glyphs/shape_align_right.png</file>
+        <file>glyphs/shape_align_top.png</file>
+        <file>glyphs/shape_flip_horizontal.png</file>
+        <file>glyphs/shape_flip_vertical.png</file>
+        <file>glyphs/arrow_rotate_anticlockwise.png</file>
+        <file>glyphs/arrow_rotate_clockwise.png</file>
+        <file>glyphs/printer.png</file>
+        <file>glyphs/grid.png</file>
+        <file>glyphs/grid_snap.png</file>
+        <file>glyphs/package.png</file>
+        <file>glyphs/plugin.png</file>
+    </qresource>
+</RCC>

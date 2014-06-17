@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>662</width>
+    <height>370</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow [*]</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="margin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="ComponentTree" name="treeWidget">
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="showDropIndicator" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="verticalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
+       </property>
+       <property name="indentation">
+        <number>0</number>
+       </property>
+       <property name="rootIsDecorated">
+        <bool>false</bool>
+       </property>
+       <property name="headerHidden">
+        <bool>true</bool>
+       </property>
+       <column>
+        <property name="text">
+         <string notr="true">1</string>
+        </property>
+       </column>
+      </widget>
+      <widget class="QGraphicsView" name="graphicsView">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>3</horstretch>
+         <verstretch>3</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="renderHints">
+        <set>QPainter::Antialiasing|QPainter::SmoothPixmapTransform|QPainter::TextAntialiasing</set>
+       </property>
+       <property name="dragMode">
+        <enum>QGraphicsView::RubberBandDrag</enum>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>662</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="fileMenu">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <widget class="QMenu" name="exportMenu">
+     <property name="title">
+      <string>&amp;Export</string>
+     </property>
+    </widget>
+    <widget class="QMenu" name="recentFilesMenu">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="title">
+      <string>Recent files</string>
+     </property>
+     <addaction name="clearMruAction"/>
+    </widget>
+    <addaction name="newAction"/>
+    <addaction name="openAction"/>
+    <addaction name="recentFilesMenu"/>
+    <addaction name="separator"/>
+    <addaction name="saveAction"/>
+    <addaction name="saveAsAction"/>
+    <addaction name="separator"/>
+    <addaction name="exportMenu"/>
+    <addaction name="separator"/>
+    <addaction name="printAction"/>
+    <addaction name="separator"/>
+    <addaction name="exitAction"/>
+   </widget>
+   <widget class="QMenu" name="aboutMenu">
+    <property name="title">
+     <string>&amp;About</string>
+    </property>
+    <addaction name="aboutFrameworkAction"/>
+    <addaction name="aboutPluginsAction"/>
+   </widget>
+   <widget class="QMenu" name="viewMenu">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <addaction name="zoomInAction"/>
+    <addaction name="zoomOutAction"/>
+    <addaction name="separator"/>
+    <addaction name="gridAction"/>
+    <addaction name="snapToGridAction"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="editMenu">
+    <property name="title">
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="undoAction"/>
+    <addaction name="redoAction"/>
+    <addaction name="separator"/>
+    <addaction name="cutAction"/>
+    <addaction name="copyAction"/>
+    <addaction name="pasteAction"/>
+    <addaction name="deleteAction"/>
+    <addaction name="separator"/>
+    <addaction name="selectAllAction"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="toolsMenu">
+    <property name="title">
+     <string>&amp;Tools</string>
+    </property>
+    <addaction name="settingsAction"/>
+   </widget>
+   <widget class="QMenu" name="elementMenu">
+    <property name="title">
+     <string>E&amp;lement</string>
+    </property>
+    <widget class="QMenu" name="alignMenu">
+     <property name="title">
+      <string>&amp;Align</string>
+     </property>
+     <addaction name="alignLeftAction"/>
+     <addaction name="alignCenterAction"/>
+     <addaction name="alignRightAction"/>
+     <addaction name="separator"/>
+     <addaction name="alignTopAction"/>
+     <addaction name="alignMiddleAction"/>
+     <addaction name="alignBottomAction"/>
+    </widget>
+    <widget class="QMenu" name="flipMenu">
+     <property name="title">
+      <string>&amp;Flip</string>
+     </property>
+     <addaction name="flipHorizontalAction"/>
+     <addaction name="flipVerticalAction"/>
+    </widget>
+    <widget class="QMenu" name="rotateMenu">
+     <property name="title">
+      <string>&amp;Rotate</string>
+     </property>
+     <addaction name="rotateClockwiseAction"/>
+     <addaction name="rotateAnticlockwiseAction"/>
+    </widget>
+    <addaction name="alignMenu"/>
+    <addaction name="flipMenu"/>
+    <addaction name="rotateMenu"/>
+    <addaction name="separator"/>
+    <addaction name="propertiesAction"/>
+   </widget>
+   <addaction name="fileMenu"/>
+   <addaction name="editMenu"/>
+   <addaction name="viewMenu"/>
+   <addaction name="elementMenu"/>
+   <addaction name="toolsMenu"/>
+   <addaction name="aboutMenu"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="windowTitle">
+    <string>File</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="newAction"/>
+   <addaction name="openAction"/>
+   <addaction name="saveAction"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="editToolBar">
+   <property name="windowTitle">
+    <string>Edit</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="undoAction"/>
+   <addaction name="redoAction"/>
+   <addaction name="separator"/>
+   <addaction name="cutAction"/>
+   <addaction name="copyAction"/>
+   <addaction name="pasteAction"/>
+   <addaction name="separator"/>
+   <addaction name="deleteAction"/>
+  </widget>
+  <widget class="QToolBar" name="elementToolBar">
+   <property name="windowTitle">
+    <string>Element</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="alignLeftAction"/>
+   <addaction name="alignCenterAction"/>
+   <addaction name="alignRightAction"/>
+   <addaction name="separator"/>
+   <addaction name="alignTopAction"/>
+   <addaction name="alignMiddleAction"/>
+   <addaction name="alignBottomAction"/>
+   <addaction name="separator"/>
+   <addaction name="flipHorizontalAction"/>
+   <addaction name="flipVerticalAction"/>
+   <addaction name="separator"/>
+   <addaction name="rotateClockwiseAction"/>
+   <addaction name="rotateAnticlockwiseAction"/>
+  </widget>
+  <action name="newAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/page_white.png</normaloff>:/glyphs/page_white.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;New</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="openAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/folder.png</normaloff>:/glyphs/folder.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Open...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="saveAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/disk.png</normaloff>:/glyphs/disk.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="deleteAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/cross.png</normaloff>:/glyphs/cross.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Delete</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
+  </action>
+  <action name="zoomInAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/zoom_in.png</normaloff>:/glyphs/zoom_in.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom in</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl++</string>
+   </property>
+  </action>
+  <action name="zoomOutAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/zoom_out.png</normaloff>:/glyphs/zoom_out.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom out</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
+   </property>
+  </action>
+  <action name="aboutFrameworkAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/information.png</normaloff>:/glyphs/information.png</iconset>
+   </property>
+   <property name="text">
+    <string>About &amp;Framework...</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
+  <action name="exitAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/door.png</normaloff>:/glyphs/door.png</iconset>
+   </property>
+   <property name="text">
+    <string>E&amp;xit</string>
+   </property>
+   <property name="toolTip">
+    <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="settingsAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/wrench.png</normaloff>:/glyphs/wrench.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Settings</string>
+   </property>
+  </action>
+  <action name="saveAsAction">
+   <property name="text">
+    <string>Save &amp;As...</string>
+   </property>
+   <property name="toolTip">
+    <string>Save As</string>
+   </property>
+  </action>
+  <action name="selectAllAction">
+   <property name="text">
+    <string>Select &amp;All</string>
+   </property>
+   <property name="toolTip">
+    <string>Select All</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="copyAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/copy.png</normaloff>:/glyphs/copy.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Copy</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="pasteAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/paste_plain.png</normaloff>:/glyphs/paste_plain.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Paste</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="cutAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/cut.png</normaloff>:/glyphs/cut.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cu&amp;t</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="undoAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/arrow_undo.png</normaloff>:/glyphs/arrow_undo.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Undo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="redoAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/arrow_redo.png</normaloff>:/glyphs/arrow_redo.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Redo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Y</string>
+   </property>
+  </action>
+  <action name="alignBottomAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/shape_align_bottom.png</normaloff>:/glyphs/shape_align_bottom.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align &amp;Bottom</string>
+   </property>
+   <property name="toolTip">
+    <string>Align Bottom</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+Down</string>
+   </property>
+  </action>
+  <action name="alignLeftAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/shape_align_left.png</normaloff>:/glyphs/shape_align_left.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align &amp;Left</string>
+   </property>
+   <property name="toolTip">
+    <string>Align Left</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+Left</string>
+   </property>
+  </action>
+  <action name="alignRightAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/shape_align_right.png</normaloff>:/glyphs/shape_align_right.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align &amp;Right</string>
+   </property>
+   <property name="toolTip">
+    <string>Align Right</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+Right</string>
+   </property>
+  </action>
+  <action name="alignTopAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/shape_align_top.png</normaloff>:/glyphs/shape_align_top.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align &amp;Top</string>
+   </property>
+   <property name="toolTip">
+    <string>Align Top</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+Up</string>
+   </property>
+  </action>
+  <action name="alignCenterAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/shape_align_center.png</normaloff>:/glyphs/shape_align_center.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align &amp;Center</string>
+   </property>
+   <property name="toolTip">
+    <string>Align Center</string>
+   </property>
+  </action>
+  <action name="alignMiddleAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/shape_align_middle.png</normaloff>:/glyphs/shape_align_middle.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align &amp;Middle</string>
+   </property>
+   <property name="toolTip">
+    <string>Align Middle</string>
+   </property>
+  </action>
+  <action name="flipHorizontalAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/shape_flip_horizontal.png</normaloff>:/glyphs/shape_flip_horizontal.png</iconset>
+   </property>
+   <property name="text">
+    <string>Flip &amp;Horizontal</string>
+   </property>
+   <property name="toolTip">
+    <string>Flip Horizontal</string>
+   </property>
+  </action>
+  <action name="flipVerticalAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/shape_flip_vertical.png</normaloff>:/glyphs/shape_flip_vertical.png</iconset>
+   </property>
+   <property name="text">
+    <string>Flip &amp;Vertical</string>
+   </property>
+   <property name="toolTip">
+    <string>Flip Vertical</string>
+   </property>
+  </action>
+  <action name="rotateClockwiseAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/arrow_rotate_clockwise.png</normaloff>:/glyphs/arrow_rotate_clockwise.png</iconset>
+   </property>
+   <property name="text">
+    <string>Rotate &amp;clockwise</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+,</string>
+   </property>
+  </action>
+  <action name="rotateAnticlockwiseAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/arrow_rotate_anticlockwise.png</normaloff>:/glyphs/arrow_rotate_anticlockwise.png</iconset>
+   </property>
+   <property name="text">
+    <string>Rotate &amp;anticlockwise</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+.</string>
+   </property>
+  </action>
+  <action name="gridAction">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/grid_snap.png</normaloff>:/glyphs/grid_snap.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Grid</string>
+   </property>
+  </action>
+  <action name="snapToGridAction">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/grid.png</normaloff>:/glyphs/grid.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Snap to grid</string>
+   </property>
+  </action>
+  <action name="printAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/printer.png</normaloff>:/glyphs/printer.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Print...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="clearMruAction">
+   <property name="text">
+    <string>Clear menu</string>
+   </property>
+  </action>
+  <action name="aboutPluginsAction">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/glyphs/plugin.png</normaloff>:/glyphs/plugin.png</iconset>
+   </property>
+   <property name="text">
+    <string>About &amp;Plugins...</string>
+   </property>
+  </action>
+  <action name="propertiesAction">
+   <property name="text">
+    <string>&amp;Properties...</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ComponentTree</class>
+   <extends>QTreeWidget</extends>
+   <header>componenttree.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>graphicsView</tabstop>
+ </tabstops>
+ <resources>
+  <include location="res/res.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>newAction</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>newFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>318</x>
+     <y>186</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>openAction</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>318</x>
+     <y>186</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>zoomInAction</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>zoomIn()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>328</x>
+     <y>186</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>zoomOutAction</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>zoomOut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>328</x>
+     <y>186</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>exitAction</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>328</x>
+     <y>186</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>aboutFrameworkAction</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>about()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>328</x>
+     <y>186</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>selectAllAction</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>328</x>
+     <y>186</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>printAction</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>print()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>330</x>
+     <y>184</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clearMruAction</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>clearMru()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>330</x>
+     <y>184</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>aboutPluginsAction</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>aboutPlugins()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>330</x>
+     <y>184</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>saveAction</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>save()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>330</x>
+     <y>184</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>saveAsAction</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>saveAs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>330</x>
+     <y>184</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>newFile()</slot>
+  <slot>open()</slot>
+  <slot>save()</slot>
+  <slot>saveAs()</slot>
+  <slot>about()</slot>
+  <slot>zoomIn()</slot>
+  <slot>zoomOut()</slot>
+  <slot>selectAll()</slot>
+  <slot>print()</slot>
+  <slot>clearMru()</slot>
+  <slot>aboutPlugins()</slot>
+ </slots>
+</ui>
